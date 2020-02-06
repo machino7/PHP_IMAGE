@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+    app:
+        build: 
+            context: ./docker/app
+            args:
+                BASE_IMAGE_TAG: "7.4-fpm"
+                UID: ${UID}
+                GID: ${GID}
+                UNAME: ${UNAME}
+        volumes:
+            - .:/workspace
+        environment:
+            - TZ = "Asia/Tokyo"
+        ports:
+            - 9000:9000
